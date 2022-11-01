@@ -2,6 +2,8 @@
 
 tavallista tekstiä, joka sisältää **lihavoituja** ja *kursivoituja* osuuksia
 
+Mergeäminen on lystikästä puuhaa
+
 ## Tehtävät
 
 ## Viikko 1
