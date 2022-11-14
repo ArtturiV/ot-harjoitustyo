@@ -5,25 +5,41 @@
 	Monopoli "1" --> "1" Pelilauta
 	Pelilauta "1" --> "40" Ruutu
 	Pelinappula "*" ..> "1" Ruutu
-	Aloitusruutu  --|>  Ruutu
-	Vankila  --|>  Ruutu
-	Sattuma --|> Ruutu
-	Yhteismaa --|> Ruutu
-	Asema --|> Ruutu
-	Laitos --|> Ruutu
-	Katu --|> Ruutu
-
+	Ruutu <|-- Aloitusruutu
+	Ruutu <|-- Vankila
+	Ruutu <|-- Sattuma
+	Ruutu <|-- Yhteismaa
+	Ruutu <|-- Asema
+	Ruutu <|-- Laitos
+	Ruutu <|-- Katu
+	Sattuma "1" --> "*" Sattumakortti
+	Yhteismaa "1"  --> "*" Yhteismaakortti
+	Pelaaja "1" ..> "*" Katu
 
 	class Pelaaja{
-		nimi
+		String nimi
+		int raha
 		heita_noppaa()
 	}
 	class Ruutu{
-		numero
+		int numero
 		seuraava_ruutu()
+		toiminto()
 	}
 	class Pelinappula{
-		vari
+		String vari
 		liiku()
 	}
+	class Sattumakortti{
+		toiminto()
+	}
+	class Yhteismaakortti{
+		toiminto()
+	}
+	class Katu{
+		String nimi
+		Pelaaja omistaja
+		int talot
+		int hotellit
+		
 ```
