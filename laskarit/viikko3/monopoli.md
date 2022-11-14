@@ -14,8 +14,4 @@
 		numero
 		seuraava_ruutu()
 	}
-	class Pelinappula
-		vari
-		Ruutu
-	}	
 ```
