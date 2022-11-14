@@ -17,6 +17,5 @@
 	class Pelinappula
 		vari
 		Ruutu
-		liiku()
 	}	
 ```
