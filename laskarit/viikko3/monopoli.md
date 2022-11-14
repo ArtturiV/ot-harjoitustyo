@@ -41,5 +41,5 @@
 		Pelaaja omistaja
 		int talot
 		int hotellit
-		
+	}	
 ```
