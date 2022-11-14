@@ -15,6 +15,8 @@
 	Sattuma "1" --> "*" Sattumakortti
 	Yhteismaa "1"  --> "*" Yhteismaakortti
 	Pelaaja "1" ..> "*" Katu
+	Monopoli ..> Aloitusruutu
+	Monopoli ..> Vankila
 
 	class Pelaaja{
 		String nimi
@@ -41,5 +43,7 @@
 		Pelaaja omistaja
 		int talot
 		int hotellit
+		rakenna_talo()
+		rakenna_hotelli()
 	}	
 ```
