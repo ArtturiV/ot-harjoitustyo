@@ -7,11 +7,15 @@
 	Pelinappula "*" --> "1" Ruutu
 
 	class Pelaaja{
-		Pelinappula
+		nimi
 		heita_noppaa()
 	}
 	class Ruutu{
 		numero
 		seuraava_ruutu()
+	}
+	class Pelinappula{
+		vari
+		liiku()
 	}
 ```
