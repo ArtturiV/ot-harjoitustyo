@@ -32,7 +32,7 @@
 	activate kk
 	kk-->>r6: 3
 	deactivate kk
-	r6->>kk vahenna_arvoa(1.5)
+	r6->>kk: vahenna_arvoa(1.5)
 	r6-->>m: True
 	deactivate r6
 	m->>b244: osta_lippu(kallen_kortti, 2)
