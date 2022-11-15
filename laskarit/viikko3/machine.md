@@ -10,14 +10,14 @@
 	mc->>f: FuelTank()
 	mc->>f: fill(40)
 	mc->>e: Engine(tank)
-	mc-->>mn: test
+	mc-->>mn: return
 	deactivate mc
 	mn->>mc: drive()
-	mc activate
+	activate mc
 	mc->>e: start()
 	activate e
 	e->>f: consume(5)
-	e-->>mc:
+	e-->>mc: return
 	deactivate e
 	mc->>e: is_running()
 	activate e
@@ -28,8 +28,8 @@
 	mc->>e: use_energy()
 	activate e
 	e->>f: consume(10)
-	e-->>mc:
+	e-->>mc: return
 	deactivate e
-	mc-->>mn:
+	mc-->>mn: return
 	deactivate mc	
 ```
