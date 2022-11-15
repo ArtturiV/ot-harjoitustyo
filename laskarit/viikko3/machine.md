@@ -10,7 +10,7 @@
 	mc->>f: FuelTank()
 	mc->>f: fill(40)
 	mc->>e: Engine(tank)
-	mc->>mn:
+	mc-->>mn: test
 	deactivate mc
 	mn->>mc: drive()
 	mc activate
