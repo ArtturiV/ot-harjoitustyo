@@ -2,8 +2,8 @@
  sequenceDiagram
 	participant mn as Main
 	participant mc as Machine
-	participant f as FuelTank
 	participant e as Engine
+	participant f as FuelTank
 
 	mn->>mc: Machine()
 	activate mc
