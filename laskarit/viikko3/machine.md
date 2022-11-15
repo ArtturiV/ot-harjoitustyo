@@ -1,9 +1,9 @@
 ```mermaid
  sequenceDiagram
-	participant mn as Main
-	participant mc as Machine
-	participant e as Engine
-	participant f as FuelTank
+	participant mn as main
+	participant mc as machine
+	participant e as engine
+	participant f as tank
 
 	mn->>mc: Machine()
 	activate mc
