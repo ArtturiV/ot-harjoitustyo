@@ -14,6 +14,6 @@ Mergeäminen on lystikästä puuhaa
 
 ## Dokumentaatio
 
-[Vaatimusmäärittely](https://github.com/ArtturiV/ot-harjoitustyo/blob/master/dokumentaatio/vaatimusmaarittely.md)
+[Vaatimusmäärittely](https://github.com/ArtturiV/ot-harjoitustyo/blob/master/othello/dokumentaatio/vaatimusmaarittely.md)
 
-[Työaikakirjanpito](https://github.com/ArtturiV/ot-harjoitustyo/blob/master/dokumentaatio/tuntikirjanpito.md)
+[Työaikakirjanpito](https://github.com/ArtturiV/ot-harjoitustyo/blob/master/othello/dokumentaatio/tuntikirjanpito.md)
