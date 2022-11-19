@@ -1,7 +1,3 @@
-from board import Board
+from tempui import TempUI
 
-lauta = Board()
-lauta.show()
-print(lauta.legal_moves())
-lauta.change_player()
-print(lauta.legal_moves())
+tempui = TempUI()

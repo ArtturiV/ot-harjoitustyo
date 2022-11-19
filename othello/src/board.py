@@ -1,8 +1,8 @@
 class Board:
-    # Laudan tila tallennetaan listaan, jossa 0 on tyhjä ruutu,
-    # 1 on musta nappula ja 2 on valkoinen nappula.
-    # Pelaajan vuoro tallennetaan boolean muuttujaan, jossa
-    # True on mustan vuoro ja False valkoisen.
+    """Laudan tila tallennetaan listaan, jossa 0 on tyhjä ruutu,
+    1 on musta nappula ja 2 on valkoinen nappula.
+    Pelaajan vuoro tallennetaan boolean muuttujaan, jossa
+    True on mustan vuoro ja False valkoisen."""
     def __init__(self):
         self.board_state = [[0,0,0,0,0,0,0,0],
                             [0,0,0,0,0,0,0,0],
@@ -17,10 +17,16 @@ class Board:
 
     def change_player(self):
         self.player = not self.player
+
+    def set_state(self, state):
+        if len(state) == 8 and len(state[0]) == 8:
+            self.board_state = state
+            return True
+        return False
     
-    # Funktio ottaa vastaan ruudun ja tarkistaa onko ruutu laillinen siirto.
-    # Jos siirto on laillinen, muuttaa se laudan tilaa ja palauttaa True.
-    # Jos siirto on laiton, palauttaa funktio False eikä muuta lautaa.
+    """Funktio ottaa vastaan ruudun ja tarkistaa onko ruutu laillinen siirto.
+    Jos siirto on laillinen, muuttaa se laudan tilaa ja palauttaa True.
+    Jos siirto on laiton, palauttaa funktio False eikä muuta lautaa."""
     def make_move(self,y,x):
         if (y,x) in self.legal_list:
             self.alter_board(y,x)
@@ -29,9 +35,14 @@ class Board:
 
     def show(self):
         print()
+        i = 0
+        print("   0  1  2  3  4  5  6  7")
         for row in self.board_state:
-            print(row)
+            print(i, row)
+            i += 1
         print()
+
+        
     def alter_board(self,y,x):
         for move in self.legal_list[(y,x)]:
             self.fill(y,x,move)
@@ -41,18 +52,22 @@ class Board:
             pnum = 1
         else:
             pnum = 2
-        y_start = min(y,move[0])
-        y_end = max(y,move[0])+1
-        x_start = min(x,move[1])
-        x_end = max(x,move[1])+1
-        for i in range(y_start, y_end):
-            for j in range(x_start, x_end):
-                self.board_state[i][j] = pnum
+        dist = max(abs(y-move[0]),abs(x-move[1]))
+        if y == move[0]:
+            y_step = 0
+        else:
+            y_step = (move[0]-y)//abs((move[0]-y))
+        if x == move[1]:
+            x_step = 0
+        else:
+            x_step = (move[1]-x)//abs((move[1]-x))
+        for i in range(dist+1):
+            self.board_state[y+(i*y_step)][x+(i*x_step)] = pnum
             
                 
 
-    # Funktio käy läpi laudan joka ruudun ja löytäessään pelaajan nappulan,
-    # antaa sen sijainnin funktiolle legal_check(). Funktio palauttaa listan siirroista.
+    """Funktio käy läpi laudan ruudut. Jokaisen löytämämsä tyhjän ruudun kohdalla
+    funktio antaa ruudun legal_check() funktiolle tarkistettavaksi"""
     def legal_moves(self):
         moves = {}
         temp_moves = []
@@ -71,9 +86,9 @@ class Board:
         return moves
 
 
-    # Funktio käy läpi legal_moves() funktion antamat ruudut ja tarkistaa
-    # onko niihin päättyviä laillisia siirtoja.
-    # Muuttujat pnum ja onum viittaavat sanoihin player number ja opponent number.
+    """Funktio käy läpi legal_moves() funktion antamat ruudut ja tarkistaa
+    onko niistä alkavia laillisia siirtoja.
+    Muuttujat pnum ja onum viittaavat sanoihin player number ja opponent number."""
     def legal_check(self, y, x):
         moves = []
         if self.player:
