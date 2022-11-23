@@ -3,15 +3,16 @@ class Board:
     1 on musta nappula ja 2 on valkoinen nappula.
     Pelaajan vuoro tallennetaan boolean muuttujaan, jossa
     True on mustan vuoro ja False valkoisen."""
+
     def __init__(self):
-        self.board_state = [[0,0,0,0,0,0,0,0],
-                            [0,0,0,0,0,0,0,0],
-                            [0,0,0,0,0,0,0,0],
-                            [0,0,0,1,2,0,0,0],
-                            [0,0,0,2,1,0,0,0],
-                            [0,0,0,0,0,0,0,0],
-                            [0,0,0,0,0,0,0,0],
-                            [0,0,0,0,0,0,0,0]]
+        self.board_state = [[0, 0, 0, 0, 0, 0, 0, 0],
+                            [0, 0, 0, 0, 0, 0, 0, 0],
+                            [0, 0, 0, 0, 0, 0, 0, 0],
+                            [0, 0, 0, 1, 2, 0, 0, 0],
+                            [0, 0, 0, 2, 1, 0, 0, 0],
+                            [0, 0, 0, 0, 0, 0, 0, 0],
+                            [0, 0, 0, 0, 0, 0, 0, 0],
+                            [0, 0, 0, 0, 0, 0, 0, 0]]
         self.player = True
         self.legal_list = {}
 
@@ -23,13 +24,14 @@ class Board:
             self.board_state = state
             return True
         return False
-    
+
     """Funktio ottaa vastaan ruudun ja tarkistaa onko ruutu laillinen siirto.
     Jos siirto on laillinen, muuttaa se laudan tilaa ja palauttaa True.
     Jos siirto on laiton, palauttaa funktio False eikä muuta lautaa."""
-    def make_move(self,y,x):
-        if (y,x) in self.legal_list:
-            self.alter_board(y,x)
+
+    def make_move(self, y, x):
+        if (y, x) in self.legal_list:
+            self.alter_board(y, x)
             return True
         return False
 
@@ -42,17 +44,16 @@ class Board:
             i += 1
         print()
 
-        
-    def alter_board(self,y,x):
-        for move in self.legal_list[(y,x)]:
-            self.fill(y,x,move)
+    def alter_board(self, y, x):
+        for move in self.legal_list[(y, x)]:
+            self.fill(y, x, move)
 
-    def fill(self,y,x,move):
+    def fill(self, y, x, move):
         if self.player:
             pnum = 1
         else:
             pnum = 2
-        dist = max(abs(y-move[0]),abs(x-move[1]))
+        dist = max(abs(y-move[0]), abs(x-move[1]))
         if y == move[0]:
             y_step = 0
         else:
@@ -63,32 +64,27 @@ class Board:
             x_step = (move[1]-x)//abs((move[1]-x))
         for i in range(dist+1):
             self.board_state[y+(i*y_step)][x+(i*x_step)] = pnum
-            
-                
 
     """Funktio käy läpi laudan ruudut. Jokaisen löytämämsä tyhjän ruudun kohdalla
     funktio antaa ruudun legal_check() funktiolle tarkistettavaksi"""
+
     def legal_moves(self):
         moves = {}
         temp_moves = []
-        if self.player:
-            pnum = 1
-        else:
-            pnum = 2
         for i in range(8):
             for j in range(8):
                 if self.board_state[i][j] == 0:
-                    temp_moves = self.legal_check(i,j)
+                    temp_moves = self.legal_check(i, j)
                     if len(temp_moves) > 0:
-                        moves[(i,j)] = temp_moves.copy()
+                        moves[(i, j)] = temp_moves.copy()
                     temp_moves.clear()
         self.legal_list = moves
         return moves
 
-
     """Funktio käy läpi legal_moves() funktion antamat ruudut ja tarkistaa
     onko niistä alkavia laillisia siirtoja.
     Muuttujat pnum ja onum viittaavat sanoihin player number ja opponent number."""
+
     def legal_check(self, y, x):
         moves = []
         if self.player:
@@ -104,7 +100,7 @@ class Board:
             while temp_y > 0:
                 temp_y -= 1
                 if self.board_state[temp_y][temp_x] == pnum:
-                    moves.append((temp_y,temp_x))
+                    moves.append((temp_y, temp_x))
                     break
                 if self.board_state[temp_y][temp_x] == 0:
                     break
@@ -113,7 +109,7 @@ class Board:
             while temp_y < 7:
                 temp_y += 1
                 if self.board_state[temp_y][temp_x] == pnum:
-                    moves.append((temp_y,temp_x))
+                    moves.append((temp_y, temp_x))
                     break
                 if self.board_state[temp_y][temp_x] == 0:
                     break
@@ -123,7 +119,7 @@ class Board:
             while temp_x > 0:
                 temp_x -= 1
                 if self.board_state[temp_y][temp_x] == pnum:
-                    moves.append((temp_y,temp_x))
+                    moves.append((temp_y, temp_x))
                     break
                 if self.board_state[temp_y][temp_x] == 0:
                     break
@@ -132,7 +128,7 @@ class Board:
             while temp_x < 7:
                 temp_x += 1
                 if self.board_state[temp_y][temp_x] == pnum:
-                    moves.append((temp_y,temp_x))
+                    moves.append((temp_y, temp_x))
                     break
                 if self.board_state[temp_y][temp_x] == 0:
                     break
@@ -143,7 +139,7 @@ class Board:
                 temp_y -= 1
                 temp_x -= 1
                 if self.board_state[temp_y][temp_x] == pnum:
-                    moves.append((temp_y,temp_x))
+                    moves.append((temp_y, temp_x))
                     break
                 if self.board_state[temp_y][temp_x] == 0:
                     break
@@ -154,7 +150,7 @@ class Board:
                 temp_y += 1
                 temp_x += 1
                 if self.board_state[temp_y][temp_x] == pnum:
-                    moves.append((temp_y,temp_x))
+                    moves.append((temp_y, temp_x))
                     break
                 if self.board_state[temp_y][temp_x] == 0:
                     break
@@ -165,7 +161,7 @@ class Board:
                 temp_y -= 1
                 temp_x += 1
                 if self.board_state[temp_y][temp_x] == pnum:
-                    moves.append((temp_y,temp_x))
+                    moves.append((temp_y, temp_x))
                     break
                 if self.board_state[temp_y][temp_x] == 0:
                     break
@@ -176,10 +172,9 @@ class Board:
                 temp_y += 1
                 temp_x -= 1
                 if self.board_state[temp_y][temp_x] == pnum:
-                    moves.append((temp_y,temp_x))
+                    moves.append((temp_y, temp_x))
                     break
                 if self.board_state[temp_y][temp_x] == 0:
                     break
 
         return moves
-                        
