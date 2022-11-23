@@ -1,4 +1,4 @@
-from tempui import TempUI
+from ui.tempui import TempUI
 
 
 def main():
