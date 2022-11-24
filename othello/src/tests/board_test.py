@@ -59,27 +59,29 @@ class TestBoard(unittest.TestCase):
         self.assertEqual(self.board.set_state(state), False)
 
     def test_legal_moves_player1(self):
-        moves = {(2, 4): [(4, 4)], (3, 5): [(3, 3)], (4, 2): [(4, 4)], (5, 3): [(3, 3)]}
+        moves = {(2, 4): [(4, 4)], (3, 5): [(3, 3)],
+                 (4, 2): [(4, 4)], (5, 3): [(3, 3)]}
 
         self.assertEqual(self.board.legal_moves(), moves)
 
     def test_legal_moves_player2(self):
-        moves = {(2, 3): [(4, 3)], (3, 2): [(3, 4)], (4, 5): [(4, 3)], (5, 4): [(3, 4)]}
+        moves = {(2, 3): [(4, 3)], (3, 2): [(3, 4)],
+                 (4, 5): [(4, 3)], (5, 4): [(3, 4)]}
         self.board.change_player()
 
         self.assertEqual(self.board.legal_moves(), moves)
 
     def test_make_move_legal_move_returns_true(self):
         self.board.legal_moves()
-        self.assertEqual(self.board.make_move(2,4), True)
+        self.assertEqual(self.board.make_move(2, 4), True)
 
     def test_make_move_illegal_move_returns_False(self):
         self.board.legal_moves()
-        self.assertEqual(self.board.make_move(2,5), False)
+        self.assertEqual(self.board.make_move(2, 5), False)
 
     def test_make_move_legal_move_changes_board(self):
         self.board.legal_moves()
-        self.board.make_move(2,4)
+        self.board.make_move(2, 4)
         state = [[0, 0, 0, 0, 0, 0, 0, 0],
                  [0, 0, 0, 0, 0, 0, 0, 0],
                  [0, 0, 0, 0, 1, 0, 0, 0],
@@ -89,10 +91,10 @@ class TestBoard(unittest.TestCase):
                  [0, 0, 0, 0, 0, 0, 0, 0],
                  [0, 0, 0, 0, 0, 0, 0, 0]]
         self.assertEqual(self.board.board_state, state)
-    
+
     def test_make_move_illegal_move_doesnt_change_board(self):
         self.board.legal_moves()
-        self.board.make_move(6,4)
+        self.board.make_move(6, 4)
         state = [[0, 0, 0, 0, 0, 0, 0, 0],
                  [0, 0, 0, 0, 0, 0, 0, 0],
                  [0, 0, 0, 0, 0, 0, 0, 0],
@@ -102,7 +104,7 @@ class TestBoard(unittest.TestCase):
                  [0, 0, 0, 0, 0, 0, 0, 0],
                  [0, 0, 0, 0, 0, 0, 0, 0]]
         self.assertEqual(self.board.board_state, state)
-    
+
     def test_legal_check_player1(self):
         state = [[0, 0, 0, 0, 0, 0, 0, 0],
                  [0, 0, 0, 0, 0, 0, 0, 0],
@@ -113,9 +115,10 @@ class TestBoard(unittest.TestCase):
                  [0, 1, 1, 1, 1, 1, 0, 0],
                  [0, 0, 0, 0, 0, 0, 0, 0]]
         self.board.set_state(state)
-        moves = [(2, 3), (6, 3), (4, 1), (4, 5), (2, 1), (6, 5), (2, 5), (6, 1)]
-        self.assertEqual(self.board.legal_check(4,3),moves)
-    
+        moves = [(2, 3), (6, 3), (4, 1), (4, 5),
+                 (2, 1), (6, 5), (2, 5), (6, 1)]
+        self.assertEqual(self.board.legal_check(4, 3), moves)
+
     def test_legal_check_player2(self):
         state = [[0, 0, 0, 0, 0, 0, 0, 0],
                  [0, 0, 0, 0, 0, 0, 0, 0],
@@ -127,14 +130,70 @@ class TestBoard(unittest.TestCase):
                  [0, 0, 0, 0, 0, 0, 0, 0]]
         self.board.set_state(state)
         self.board.change_player()
-        moves = [(2, 3), (6, 3), (4, 1), (4, 5), (2, 1), (6, 5), (2, 5), (6, 1)]
-        self.assertEqual(self.board.legal_check(4,3),moves)
-    
+        moves = [(2, 3), (6, 3), (4, 1), (4, 5),
+                 (2, 1), (6, 5), (2, 5), (6, 1)]
+        self.assertEqual(self.board.legal_check(4, 3), moves)
+
     def test_empty_legal_check_player1(self):
         moves = []
-        self.assertEqual(self.board.legal_check(1,1),moves)
-    
+        self.assertEqual(self.board.legal_check(1, 1), moves)
+
     def test_empty_legal_check_player2(self):
         moves = []
         self.board.change_player()
-        self.assertEqual(self.board.legal_check(1,1),moves)
+        self.assertEqual(self.board.legal_check(1, 1), moves)
+
+    def test_check_tally(self):
+        self.assertEqual(self.board.check_tally(), (2, 2))
+
+    def test_check_end_returns_false_if_player_has_moves(self):
+        self.board.legal_moves()
+        self.assertEqual(self.board.check_end(), False)
+
+    def test_check_end_doesnt_change_player_if_player_has_moves(self):
+        self.board.legal_moves()
+        self.board.check_end()
+        self.assertEqual(self.board.player, True)
+
+    def test_check_end_returns_false_if_other_player_has_moves(self):
+        state = [[0, 0, 0, 0, 0, 0, 0, 0],
+                 [0, 0, 0, 0, 0, 0, 0, 0],
+                 [0, 0, 0, 0, 0, 0, 0, 0],
+                 [0, 0, 0, 0, 0, 0, 0, 0],
+                 [0, 0, 0, 0, 0, 0, 0, 0],
+                 [0, 0, 0, 0, 0, 0, 0, 0],
+                 [0, 0, 0, 0, 1, 0, 0, 0],
+                 [0, 0, 0, 0, 2, 0, 0, 0]]
+        self.board.set_state(state)
+        self.board.legal_moves()
+        self.assertEqual(self.board.check_end(), False)
+
+    def test_check_end_changes_player(self):
+        state = [[0, 0, 0, 0, 0, 0, 0, 0],
+                 [0, 0, 0, 0, 0, 0, 0, 0],
+                 [0, 0, 0, 0, 0, 0, 0, 0],
+                 [0, 0, 0, 0, 0, 0, 0, 0],
+                 [0, 0, 0, 0, 0, 0, 0, 0],
+                 [0, 0, 0, 0, 0, 0, 0, 0],
+                 [0, 0, 0, 0, 1, 0, 0, 0],
+                 [0, 0, 0, 0, 2, 0, 0, 0]]
+        self.board.set_state(state)
+        self.board.legal_moves()
+        self.board.check_end()
+        self.assertEqual(self.board.player, False)
+
+    def test_check_end_returns_true_if_neither_have_moves(self):
+        state = [[0, 0, 0, 0, 0, 0, 0, 0],
+                 [0, 0, 0, 0, 0, 0, 0, 0],
+                 [0, 1, 0, 2, 0, 0, 0, 0],
+                 [0, 0, 0, 0, 0, 0, 0, 0],
+                 [0, 0, 0, 0, 0, 0, 0, 0],
+                 [0, 0, 0, 0, 0, 0, 0, 0],
+                 [0, 0, 0, 0, 0, 0, 0, 0],
+                 [0, 0, 0, 0, 0, 0, 0, 0]]
+        self.board.set_state(state)
+        self.board.legal_moves()
+        self.assertEqual(self.board.check_end(), True)
+
+    def test_check_tally(self):
+        self.assertEqual(self.board.check_tally(), (2, 2))
