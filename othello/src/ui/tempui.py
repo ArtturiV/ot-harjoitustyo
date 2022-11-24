@@ -7,11 +7,21 @@ class TempUI:
         self.board = Board()
         while True:
             self.board.show()
+            if len(self.board.legal_moves()) == 0:
+                if self.board.check_end():
+                    tally = self.board.check_tally()
+                    if tally[0] > tally[1]:
+                        print("Musta voitti!")
+                        break
+                    elif tally[0] < tally[1]:
+                        print("Valkoinen voitti!")
+                        break
+                    print("Tasapeli!")
+                    break
             if self.board.player:
                 print("Mustan (1) vuoro")
             else:
                 print("Valkoisen (2) vuoro")
-            self.board.legal_moves()
             print("Lopeta suorittaminen komennolla: x")
             x = input("Anna kordinaatit muodossa y,x:")
             if x[0] == "x" or x[0] == "X":
