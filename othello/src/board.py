@@ -21,6 +21,25 @@ class Board:
             return True
         return False
 
+    def check_end(self):
+        if len(self.legal_list) == 0:
+            self.change_player()
+            if len(self.legal_moves()) == 0:
+                return True
+        return False
+
+    def check_tally(self):
+        black_tally = 0
+        white_tally = 0
+
+        for i in range(8):
+            for j in range(8):
+                if self.board_state[i][j] == 1:
+                    black_tally += 1
+                elif self.board_state[i][j] == 2:
+                    white_tally += 1
+        return (black_tally, white_tally)
+
     def make_move(self, y_square, x_square):
         if (y_square, x_square) in self.legal_list:
             self.alter_board(y_square, x_square)
