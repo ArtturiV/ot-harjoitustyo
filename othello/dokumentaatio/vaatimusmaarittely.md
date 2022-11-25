@@ -8,10 +8,11 @@ Pelin voittaa pelaaja, jonka väriä on pelin lopuksi enemmän laudalla.
 
 ## Perusversio:
 
-- Kahdestaan pelattava versio Othellosta
-- Laillisten siirtojen automaattinen tunnistaminen
-- Pelin loppumisen ja voittajan automaattinen tunnistaminen
+- Kahdestaan pelattava versio Othellosta - tehty
+- Laillisten siirtojen automaattinen tunnistaminen - tehty
+- Pelin loppumisen ja voittajan automaattinen tunnistaminen - tehty
 - Pelin tilan tallentaminen ja lataaminen
+- Graafinen käyttöliittymä
 
 ## Jatkokehitys:
 

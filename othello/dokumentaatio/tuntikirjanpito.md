@@ -5,4 +5,5 @@
 | 19.11 | 2      | Toiminnallisuutta lisätty, testejä lisätty, invoke komennot |
 | 23.11 | 3      | Otettu käyttöön lint ja kirjoitettu testejä |
 | 24.11 | 2      | Lisää toiminnallisuutta sekä testejä |
-| yht.  | 12      |       |
+| 25.11 | 3      | Aloitettu graafisen käyttöliittymän teko |
+| yht.  | 15      |       |
