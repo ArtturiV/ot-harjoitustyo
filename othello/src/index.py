@@ -1,8 +1,12 @@
 from ui.tempui import TempUI
+from board import Board
 
 
 def main():
-    tempui = TempUI()
+    board = Board()
+    tempui = TempUI(board)
+
+    tempui.start()
 
 
 if __name__ == "__main__":

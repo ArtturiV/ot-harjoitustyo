@@ -1,10 +1,11 @@
-from board import Board
 """Väliaikainen teksipohjainen ui. Altis virhekomennoille"""
 
 
 class TempUI:
-    def __init__(self):
-        self.board = Board()
+    def __init__(self, board):
+        self.board = board
+
+    def start(self):
         while True:
             self.board.show()
             if len(self.board.legal_moves()) == 0:
