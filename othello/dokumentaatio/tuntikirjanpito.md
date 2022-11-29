@@ -6,4 +6,5 @@
 | 23.11 | 3      | Otettu käyttöön lint ja kirjoitettu testejä |
 | 24.11 | 2      | Lisää toiminnallisuutta sekä testejä |
 | 25.11 | 3      | Aloitettu graafisen käyttöliittymän teko |
-| yht.  | 15      |       |
+| 29.11 | 2      | Suunniteltu lopullista toteutusta ja luotu luokkakaavio |
+| yht.  | 17      |       |
