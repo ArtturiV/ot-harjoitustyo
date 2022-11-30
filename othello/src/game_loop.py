@@ -14,13 +14,13 @@ class GameLoop:
                 break
             self.render()
             self.clock.tick(60)
-    
+
     def handle_events(self):
         for event in self.event_queue.get():
             if event.type == pygame.MOUSEBUTTONUP:
                 self.gameinterface.handle_click(pygame.mouse.get_pos())
             elif event.type == pygame.QUIT:
                 return False
-    
+
     def render(self):
         self.renderer.render()
