@@ -7,4 +7,5 @@
 | 24.11 | 2      | Lisää toiminnallisuutta sekä testejä |
 | 25.11 | 3      | Aloitettu graafisen käyttöliittymän teko |
 | 29.11 | 2      | Suunniteltu lopullista toteutusta ja luotu luokkakaavio |
-| yht.  | 17      |       |
+| 30.11 | 1      | Jatkettu graafisen käyttöliittymän tekoa |
+| yht.  | 18      |       |
