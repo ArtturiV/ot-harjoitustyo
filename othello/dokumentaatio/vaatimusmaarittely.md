@@ -12,7 +12,7 @@ Pelin voittaa pelaaja, jonka väriä on pelin lopuksi enemmän laudalla.
 - Laillisten siirtojen automaattinen tunnistaminen - tehty
 - Pelin loppumisen ja voittajan automaattinen tunnistaminen - tehty
 - Pelin tilan tallentaminen ja lataaminen
-- Graafinen käyttöliittymä
+- Graafinen käyttöliittymä - tehty
 
 ## Jatkokehitys:
 
