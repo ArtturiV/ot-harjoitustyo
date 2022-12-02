@@ -79,16 +79,48 @@ class TestBoard(unittest.TestCase):
         self.board.legal_moves()
         self.assertEqual(self.board.make_move(2, 5), False)
 
-    def test_make_move_legal_move_changes_board(self):
-        self.board.legal_moves()
-        self.board.make_move(2, 4)
+    def test_make_move_legal_move_changes_board_player1(self):
         state = [[0, 0, 0, 0, 0, 0, 0, 0],
                  [0, 0, 0, 0, 0, 0, 0, 0],
-                 [0, 0, 0, 0, 1, 0, 0, 0],
-                 [0, 0, 0, 1, 1, 0, 0, 0],
-                 [0, 0, 0, 2, 1, 0, 0, 0],
+                 [0, 1, 1, 1, 1, 1, 0, 0],
+                 [0, 1, 2, 2, 2, 1, 0, 0],
+                 [0, 1, 2, 0, 2, 1, 0, 0],
+                 [0, 1, 2, 2, 2, 1, 0, 0],
+                 [0, 1, 1, 1, 1, 1, 0, 0],
+                 [0, 0, 0, 0, 0, 0, 0, 0]]
+        self.board.set_state(state)
+        self.board.legal_moves()
+        self.board.make_move(4, 3)
+        state = [[0, 0, 0, 0, 0, 0, 0, 0],
                  [0, 0, 0, 0, 0, 0, 0, 0],
+                 [0, 1, 1, 1, 1, 1, 0, 0],
+                 [0, 1, 1, 1, 1, 1, 0, 0],
+                 [0, 1, 1, 1, 1, 1, 0, 0],
+                 [0, 1, 1, 1, 1, 1, 0, 0],
+                 [0, 1, 1, 1, 1, 1, 0, 0],
+                 [0, 0, 0, 0, 0, 0, 0, 0]]
+        self.assertEqual(self.board.board_state, state)
+
+    def test_make_move_legal_move_changes_board_player2(self):
+        state = [[0, 0, 0, 0, 0, 0, 0, 0],
                  [0, 0, 0, 0, 0, 0, 0, 0],
+                 [0, 2, 2, 2, 2, 2, 0, 0],
+                 [0, 2, 1, 1, 1, 2, 0, 0],
+                 [0, 2, 1, 0, 1, 2, 0, 0],
+                 [0, 2, 1, 1, 1, 2, 0, 0],
+                 [0, 2, 2, 2, 2, 2, 0, 0],
+                 [0, 0, 0, 0, 0, 0, 0, 0]]
+        self.board.set_state(state)
+        self.board.change_player()
+        self.board.legal_moves()
+        self.board.make_move(4, 3)
+        state = [[0, 0, 0, 0, 0, 0, 0, 0],
+                 [0, 0, 0, 0, 0, 0, 0, 0],
+                 [0, 2, 2, 2, 2, 2, 0, 0],
+                 [0, 2, 2, 2, 2, 2, 0, 0],
+                 [0, 2, 2, 2, 2, 2, 0, 0],
+                 [0, 2, 2, 2, 2, 2, 0, 0],
+                 [0, 2, 2, 2, 2, 2, 0, 0],
                  [0, 0, 0, 0, 0, 0, 0, 0]]
         self.assertEqual(self.board.board_state, state)
 
@@ -104,6 +136,18 @@ class TestBoard(unittest.TestCase):
                  [0, 0, 0, 0, 0, 0, 0, 0],
                  [0, 0, 0, 0, 0, 0, 0, 0]]
         self.assertEqual(self.board.board_state, state)
+
+    def test_legal_check_stays_inside_board(self):
+        state = [[2, 0, 0, 0, 0, 0, 0, 2],
+                 [0, 0, 0, 0, 0, 0, 0, 0],
+                 [0, 0, 0, 0, 0, 0, 0, 0],
+                 [0, 0, 0, 0, 0, 0, 0, 0],
+                 [0, 0, 0, 0, 0, 0, 0, 0],
+                 [0, 0, 0, 0, 0, 0, 0, 0],
+                 [0, 0, 0, 0, 0, 0, 0, 0],
+                 [2, 0, 0, 0, 0, 0, 0, 2]]
+        self.board.set_state(state)
+        self.assertEqual(self.board.legal_moves(), {})
 
     def test_legal_check_player1(self):
         state = [[0, 0, 0, 0, 0, 0, 0, 0],

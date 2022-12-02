@@ -12,12 +12,15 @@ class Board:
         self.player = True
         self.legal_list = {}
 
+        self.legal_moves()
+
     def change_player(self):
         self.player = not self.player
 
     def set_state(self, state):
         if len(state) == 8 and len(state[0]) == 8:
             self.board_state = state
+            self.legal_moves()
             return True
         return False
 
@@ -45,15 +48,6 @@ class Board:
             self.alter_board(y_square, x_square)
             return True
         return False
-
-    def show(self):
-        print()
-        i = 0
-        print("   0  1  2  3  4  5  6  7")
-        for row in self.board_state:
-            print(i, row)
-            i += 1
-        print()
 
     def alter_board(self, y_square, x_square):
         for move in self.legal_list[(y_square, x_square)]:
