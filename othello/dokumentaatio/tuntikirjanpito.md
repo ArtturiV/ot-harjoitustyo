@@ -8,5 +8,5 @@
 | 25.11 | 3      | Aloitettu graafisen käyttöliittymän teko |
 | 29.11 | 2      | Suunniteltu lopullista toteutusta ja luotu luokkakaavio |
 | 30.11 | 1      | Jatkettu graafisen käyttöliittymän tekoa |
-| 2.12  | 4      | Graafisen käyttöliittymän tekoa, tesiten laajentamista |
+| 2.12  | 4      | Graafisen käyttöliittymän tekoa, testien laajentamista |
 | yht.  | 22      |       |

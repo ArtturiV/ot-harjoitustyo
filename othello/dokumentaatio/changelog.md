@@ -9,3 +9,7 @@
 
 - Peli tunnistaa pelin loppumisen
 - Peli tunnistaa voittavan pelaajan
+
+## Viikko 5
+
+- Graafinen käyttöliittymä otettu käyttöön
