@@ -9,4 +9,5 @@
 | 29.11 | 2      | Suunniteltu lopullista toteutusta ja luotu luokkakaavio |
 | 30.11 | 1      | Jatkettu graafisen käyttöliittymän tekoa |
 | 2.12  | 4      | Graafisen käyttöliittymän tekoa, testien laajentamista |
-| yht.  | 22      |       |
+| 3.12  | 2      | Valmisteltu projekti releasea varten |
+| yht.  | 24      |       |
