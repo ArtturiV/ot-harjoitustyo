@@ -50,6 +50,6 @@ Yhden siirron pelaaminen sekvenssikaaviona
 	gl->>r: render()
 	gl->>c: get_ticks(60)
 	activate c
-	c-->gl: pygame.time.get_ticks()
+	c-->>gl: pygame.time.get_ticks()
 	deactivate c
 ```
