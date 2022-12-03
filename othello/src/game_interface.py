@@ -5,7 +5,6 @@ class GameInterface:
         self.board = board
 
     def handle_click(self, coordinates):
-        print(coordinates)
         x_coord = ((coordinates[0]-5)//100) % 8
         y_coord = ((coordinates[1]-5)//100) % 8
         if coordinates[0] < 6:
