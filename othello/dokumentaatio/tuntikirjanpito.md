@@ -10,4 +10,5 @@
 | 30.11 | 1      | Jatkettu graafisen käyttöliittymän tekoa |
 | 2.12  | 4      | Graafisen käyttöliittymän tekoa, testien laajentamista |
 | 3.12  | 2      | Valmisteltu projekti releasea varten |
-| yht.  | 24      |       |
+| 8.12  | 2      | Siistitty koodia |
+| yht.  | 26      |       |

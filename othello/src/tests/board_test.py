@@ -58,6 +58,17 @@ class TestBoard(unittest.TestCase):
                  [0, 2, 2, 2, 2, 2, 2, 0]]
         self.assertEqual(self.board.set_state(state), False)
 
+    def test_set_illegal_squares_return_false(self):
+        state = [[0, 0, 0, 0, 0, 0, 0, 0],
+                 [0, 0, 1, 0, 0, 1, 0, 0],
+                 [0, 9, 1, 0, 0, 1, 0, 0],
+                 [0, 0, 1, 0, 0, 1, 0, 0],
+                 [0, 0, 0, 0, 0, 0, 0, 0],
+                 [0, 2, 0, 0, 0, 0, 2, 0],
+                 [0, 2, 2, 2, 2, 2, 2, 0],
+                 [0, 0, 0, 0, 0, 0, 0, 0]]
+        self.assertEqual(self.board.set_state(state), False)
+
     def test_legal_moves_player1(self):
         moves = {(2, 4): [(4, 4)], (3, 5): [(3, 3)],
                  (4, 2): [(4, 4)], (5, 3): [(3, 3)]}

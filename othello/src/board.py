@@ -11,14 +11,25 @@ class Board:
                             [0, 0, 0, 0, 0, 0, 0, 0]]
         self.player = True
         self.legal_list = {}
+        self.player_number = 1
+        self.opponent_number = 2
 
         self.legal_moves()
 
     def change_player(self):
         self.player = not self.player
+        if self.player:
+            self.player_number = 1
+            self.opponent_number = 2
+        else:
+            self.player_number = 2
+            self.opponent_number = 1
 
     def set_state(self, state):
         if len(state) == 8 and len(state[0]) == 8:
+            for i in range(len(state)):
+                if not all(square in [0, 1, 2] for square in state[i]):
+                    return False
             self.board_state = state
             self.legal_moves()
             return True
@@ -54,10 +65,6 @@ class Board:
             self.fill(y_square, x_square, move)
 
     def fill(self, y_square, x_square, move):
-        if self.player:
-            pnum = 1
-        else:
-            pnum = 2
         dist = max(abs(y_square-move[0]), abs(x_square-move[1]))
         if y_square == move[0]:
             y_step = 0
@@ -68,7 +75,8 @@ class Board:
         else:
             x_step = (move[1]-x_square)//abs((move[1]-x_square))
         for i in range(dist+1):
-            self.board_state[y_square+(i*y_step)][x_square+(i*x_step)] = pnum
+            self.board_state[y_square +
+                             (i*y_step)][x_square+(i*x_step)] = self.player_number
 
     def legal_moves(self):
         moves = {}
@@ -83,96 +91,31 @@ class Board:
         self.legal_list = moves
         return moves
 
+    def check_directions(self, y_square, x_square, direction):
+        y_direction = direction[0]
+        x_direction = direction[1]
+
+        temp_y = y_square + y_direction
+        temp_x = x_square + x_direction
+
+        if -1 < temp_y < 8 and -1 < temp_x < 8 and self.board_state[temp_y][temp_x] == self.opponent_number:
+            while -1 < temp_y < 8 and -1 < temp_x < 8:
+                if self.board_state[temp_y][temp_x] == self.player_number:
+                    return (temp_y, temp_x)
+                if self.board_state[temp_y][temp_x] == 0:
+                    break
+                temp_y += y_direction
+                temp_x += x_direction
+        return False
+
     def legal_check(self, y_square, x_square):
         moves = []
-        if self.player:
-            pnum = 1
-            onum = 2
-        else:
-            pnum = 2
-            onum = 1
+        directions = [(-1, 0), (1, 0), (0, -1), (0, 1),
+                      (-1, -1), (1, 1), (-1, 1), (1, -1)]
 
-        temp_y = y_square - 1
-        temp_x = x_square
-        if temp_y > 0 and self.board_state[temp_y][temp_x] == onum:
-            while temp_y > 0:
-                temp_y -= 1
-                if self.board_state[temp_y][temp_x] == pnum:
-                    moves.append((temp_y, temp_x))
-                    break
-                if self.board_state[temp_y][temp_x] == 0:
-                    break
-        temp_y = y_square + 1
-        if temp_y < 7 and self.board_state[temp_y][temp_x] == onum:
-            while temp_y < 7:
-                temp_y += 1
-                if self.board_state[temp_y][temp_x] == pnum:
-                    moves.append((temp_y, temp_x))
-                    break
-                if self.board_state[temp_y][temp_x] == 0:
-                    break
-        temp_y = y_square
-        temp_x = x_square - 1
-        if temp_x > 0 and self.board_state[temp_y][temp_x] == onum:
-            while temp_x > 0:
-                temp_x -= 1
-                if self.board_state[temp_y][temp_x] == pnum:
-                    moves.append((temp_y, temp_x))
-                    break
-                if self.board_state[temp_y][temp_x] == 0:
-                    break
-        temp_x = x_square + 1
-        if temp_x < 7 and self.board_state[temp_y][temp_x] == onum:
-            while temp_x < 7:
-                temp_x += 1
-                if self.board_state[temp_y][temp_x] == pnum:
-                    moves.append((temp_y, temp_x))
-                    break
-                if self.board_state[temp_y][temp_x] == 0:
-                    break
-        temp_y = y_square - 1
-        temp_x = x_square - 1
-        if temp_y > 0 and temp_x > 0 and self.board_state[temp_y][temp_x] == onum:
-            while temp_y > 0 and temp_x > 0:
-                temp_y -= 1
-                temp_x -= 1
-                if self.board_state[temp_y][temp_x] == pnum:
-                    moves.append((temp_y, temp_x))
-                    break
-                if self.board_state[temp_y][temp_x] == 0:
-                    break
-        temp_y = y_square + 1
-        temp_x = x_square + 1
-        if temp_y < 7 and temp_x < 7 and self.board_state[temp_y][temp_x] == onum:
-            while temp_y < 7 and temp_x < 7:
-                temp_y += 1
-                temp_x += 1
-                if self.board_state[temp_y][temp_x] == pnum:
-                    moves.append((temp_y, temp_x))
-                    break
-                if self.board_state[temp_y][temp_x] == 0:
-                    break
-        temp_y = y_square - 1
-        temp_x = x_square + 1
-        if temp_y > 0 and temp_x < 7 and self.board_state[temp_y][temp_x] == onum:
-            while temp_y > 0 and temp_x < 7:
-                temp_y -= 1
-                temp_x += 1
-                if self.board_state[temp_y][temp_x] == pnum:
-                    moves.append((temp_y, temp_x))
-                    break
-                if self.board_state[temp_y][temp_x] == 0:
-                    break
-        temp_y = y_square + 1
-        temp_x = x_square - 1
-        if temp_y < 7 and temp_x > 0 and self.board_state[temp_y][temp_x] == onum:
-            while temp_y < 7 and temp_x > 0:
-                temp_y += 1
-                temp_x -= 1
-                if self.board_state[temp_y][temp_x] == pnum:
-                    moves.append((temp_y, temp_x))
-                    break
-                if self.board_state[temp_y][temp_x] == 0:
-                    break
+        for direction in directions:
+            temp = self.check_directions(y_square, x_square, direction)
+            if temp is not False:
+                moves.append(temp)
 
         return moves
