@@ -11,4 +11,5 @@
 | 2.12  | 4      | Graafisen käyttöliittymän tekoa, testien laajentamista |
 | 3.12  | 2      | Valmisteltu projekti releasea varten |
 | 8.12  | 2      | Siistitty koodia |
-| yht.  | 26      |       |
+| 9.12  | 3      | Tehty peliin aputila |
+| yht.  | 29      |       |

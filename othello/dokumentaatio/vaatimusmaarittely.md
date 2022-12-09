@@ -16,6 +16,6 @@ Pelin voittaa pelaaja, jonka väriä on pelin lopuksi enemmän laudalla.
 
 ## Jatkokehitys:
 
-- Toglattava aputila, joka näyttäisi lailliset siirrot
+- Toglattava aputila, joka näyttäisi lailliset siirrot - tehty
 - Yksin pelattava versio tekoälyä vastaan
 - Pelin tilan vieminen ja tuominen leikepöydältä
