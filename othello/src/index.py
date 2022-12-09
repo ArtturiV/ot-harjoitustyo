@@ -9,7 +9,7 @@ from game_interface import GameInterface
 
 def main():
     board = Board()
-    display = pygame.display.set_mode((810, 810))
+    display = pygame.display.set_mode((810, 870))
     pygame.display.set_caption("Othello")
     event_queue = EventQueue()
     renderer = Renderer(display, board)

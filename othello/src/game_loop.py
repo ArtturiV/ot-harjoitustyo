@@ -8,6 +8,7 @@ class GameLoop:
         self.renderer = renderer
         self.event_queue = event_queue
         self.game_state = 0
+        self.help_mode = False
 
     def start(self):
         while True:
@@ -25,8 +26,12 @@ class GameLoop:
     def handle_events(self):
         for event in self.event_queue.get():
             if event.type == pygame.MOUSEBUTTONUP:
-                self.game_state = self.gameinterface.handle_click(
-                    pygame.mouse.get_pos())
+                mouse_pos = pygame.mouse.get_pos()
+                if mouse_pos[1] < 811:
+                    self.game_state = self.gameinterface.handle_click(
+                        mouse_pos)
+                else:
+                    self.help_mode = not self.help_mode
             elif event.type == pygame.QUIT:
                 return False
         return True
@@ -40,7 +45,7 @@ class GameLoop:
         return 0
 
     def render(self):
-        self.renderer.render()
+        self.renderer.render(self.help_mode)
 
     def render_state(self, state):
         self.render()

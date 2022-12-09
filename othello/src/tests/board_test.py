@@ -24,6 +24,11 @@ class TestBoard(unittest.TestCase):
         self.board.change_player()
         self.assertEqual(self.board.player, False)
 
+    def test_change_player_changes_player2(self):
+        self.board.change_player()
+        self.board.change_player()
+        self.assertEqual(self.board.player, True)
+
     def test_set_state_sets_board_state(self):
         state = [[0, 0, 0, 0, 0, 0, 0, 0],
                  [0, 0, 1, 0, 0, 1, 0, 0],
