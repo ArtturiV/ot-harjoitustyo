@@ -1,10 +1,10 @@
 import pygame
-from board import Board
+from logic.board import Board
+from logic.game_interface import GameInterface
 from game_loop import GameLoop
-from event_queue import EventQueue
-from clock import Clock
-from renderer import Renderer
-from game_interface import GameInterface
+from ui.event_queue import EventQueue
+from ui.clock import Clock
+from ui.renderer import Renderer
 
 
 def main():

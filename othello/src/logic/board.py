@@ -173,7 +173,10 @@ class Board:
         temp_y = y_square + y_direction
         temp_x = x_square + x_direction
 
-        if -1 < temp_y < 8 and -1 < temp_x < 8 and self.board_state[temp_y][temp_x] == self.opponent_number:
+        if 7 < temp_y or temp_y < 0 or 7 < temp_x or temp_x < 0:
+            return False
+
+        if self.board_state[temp_y][temp_x] == self.opponent_number:
             while -1 < temp_y < 8 and -1 < temp_x < 8:
                 if self.board_state[temp_y][temp_x] == self.player_number:
                     return (temp_y, temp_x)

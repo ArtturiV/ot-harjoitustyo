@@ -8,10 +8,11 @@ class Renderer:
         dirname = os.path.dirname(__file__)
         self.display = display
         self.bg_img = pygame.image.load(
-            os.path.join(dirname, "assets", "board2.png"))
+            os.path.join(dirname, "..", "assets", "board2.png"))
+        font_path = os.path.join(dirname, "..", "assets", "font", "RobotoCondensed-Regular.ttf")
         self.board = board
-        self.font = pygame.font.SysFont(None, 100)
-        self.tally_font = pygame.font.SysFont(None, 50)
+        self.font = pygame.font.Font(font_path, 90)
+        self.tally_font = pygame.font.Font(font_path, 40)
 
     def render(self, help_mode):
         self.display.blit(self.bg_img, (0, 0))
@@ -48,40 +49,40 @@ class Renderer:
             black_tally, True, (255, 255, 255))
         white_tally_text = self.tally_font.render(
             white_tally, True, (255, 255, 255))
-        self.display.blit(black_tally_text, (600, 820))
-        self.display.blit(white_tally_text, (730, 820))
+        self.display.blit(black_tally_text, (600, 815))
+        self.display.blit(white_tally_text, (730, 815))
 
     def _render_help_mode(self, help_mode):
         if help_mode:
             button_colour = (21, 209, 90)
             button_text = self.tally_font.render(
                 "Aputila: päällä", True, (255, 255, 255))
-            button_rect = pygame.Rect(190, 818, 250, 40)
+            button_rect = pygame.Rect(190, 818, 245, 45)
         else:
             button_colour = (222, 9, 9)
             button_text = self.tally_font.render(
                 "Aputila: pois", True, (255, 255, 255))
-            button_rect = pygame.Rect(190, 818, 220, 40)
+            button_rect = pygame.Rect(190, 818, 220, 45)
         pygame.draw.rect(self.display, button_colour, button_rect)
-        self.display.blit(button_text, (200, 820))
+        self.display.blit(button_text, (200, 815))
 
     def render_state(self, state):
         if state == 2:
             text = self.font.render("Musta voitti", True, (255, 255, 255))
-            text_pos = (215, 360)
-            bg_rect = pygame.Rect(195, 350, 420, 100)
+            text_pos = (215, 355)
+            bg_rect = pygame.Rect(205, 360, 440, 100)
         elif state == 3:
             text = self.font.render("Valkoinen voitti", True, (255, 255, 255))
-            text_pos = (150, 360)
-            bg_rect = pygame.Rect(135, 350, 550, 100)
+            text_pos = (150, 355)
+            bg_rect = pygame.Rect(140, 360, 560, 100)
         elif state == 4:
             text = self.font.render("Tasapeli", True, (255, 255, 255))
-            text_pos = (250, 360)
-            bg_rect = pygame.Rect(235, 350, 300, 100)
+            text_pos = (250, 355)
+            bg_rect = pygame.Rect(245, 360, 310, 100)
         elif state == 1:
             text = self.font.render("Ei siirtoja", True, (255, 255, 255))
-            text_pos = (250, 360)
-            bg_rect = pygame.Rect(230, 350, 350, 100)
+            text_pos = (250, 355)
+            bg_rect = pygame.Rect(240, 360, 350, 100)
         pygame.draw.rect(self.display, (120, 110, 110), bg_rect)
 
         self.display.blit(text, text_pos)
