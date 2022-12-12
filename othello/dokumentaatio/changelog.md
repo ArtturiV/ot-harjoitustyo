@@ -13,3 +13,8 @@
 ## Viikko 5
 
 - Graafinen käyttöliittymä otettu käyttöön
+
+## Viikko 6
+
+- Pelissä on toglattava aputila, joka näyttää lailliset siirrot
+- Peli näyttää kumman pelaajan vuoro on ja kuinka monta nappulaa pelaajilla on
