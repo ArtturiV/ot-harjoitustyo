@@ -1,3 +1,16 @@
+# Arkkitehtuurikuvaus
+
+## Rakenne
+
+Sovelluksen rakenne on kaksitasoinen kerrosarkkitehtuuri.
+
+```mermaid
+ classDiagram
+	ui --> logic
+```
+
+Käyttöliittymästä vastavaa koodi on pakkauksessa ui ja sovelluslogiikasta vastaava pakkauksessa logic.
+
 GameInterface ottaa ui:lta vastaan klikkausten koordinaatteja ja antaa ne laudalle käsiteltäväksi.
 
 ```mermaid
