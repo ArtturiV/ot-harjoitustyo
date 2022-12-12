@@ -5,6 +5,7 @@ class GameInterface:
     Attributes:
         board: Pelilautaa kuvaavan luokan olio.
     """
+
     def __init__(self, board):
         """Luokan konsruktori
 
@@ -43,7 +44,7 @@ class GameInterface:
         return 0
 
     def handle_no_moves(self):
-        """Hoitaa tilanteen, jossa vuorossa olevalla pelaahalla ei ole siirtoja
+        """Hoitaa tilanteen, jossa vuorossa olevalla pelaajalla ei ole siirtoja
 
         Returns:
             int: 1 = peli jatkuu, 2 = musta voitti, 3 = valkoinen voitti,

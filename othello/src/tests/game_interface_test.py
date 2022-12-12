@@ -43,7 +43,7 @@ class TestGameInterface(unittest.TestCase):
                  [0, 0, 0, 0, 0, 0, 0, 0]]
         self.board.set_state(state)
         self.assertEqual(self.game_interface.handle_click((550, 350)), 2)
-    
+
     def test_white_can_win(self):
         state = [[0, 0, 0, 0, 0, 0, 0, 0],
                  [0, 0, 0, 0, 0, 0, 0, 0],
@@ -80,7 +80,7 @@ class TestGameInterface(unittest.TestCase):
                  [2, 0, 0, 0, 0, 0, 0, 1]]
         self.board.set_state(state)
         self.assertEqual(self.game_interface.handle_click((50, 750)), 4)
-    
+
     def test_coordinates_dont_wrap_around(self):
         state = [[0, 0, 0, 0, 0, 0, 0, 1],
                  [0, 0, 0, 0, 0, 0, 0, 1],
