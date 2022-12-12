@@ -3,18 +3,53 @@ import pygame
 
 
 class Renderer:
+    """Pelin renderöimisestä vastaava luokka.
+    """
+
     def __init__(self, display, board):
+        """Luokan kostruktori tallentaa muuttujiin renderöitävät
+        fontit sekä laudan kuvan.
+
+        Args:
+            display (display): Ruutu, jolle kuva renderöidään
+            board (olio): Pelilautaa kuvaavan luokan olio
+        """
         pygame.font.init()
         dirname = os.path.dirname(__file__)
         self.display = display
         self.bg_img = pygame.image.load(
             os.path.join(dirname, "..", "assets", "board2.png"))
-        font_path = os.path.join(dirname, "..", "assets", "font", "RobotoCondensed-Regular.ttf")
+        font_path = os.path.join(
+            dirname, "..", "assets", "font", "RobotoCondensed-Regular.ttf")
         self.board = board
         self.font = pygame.font.Font(font_path, 90)
         self.tally_font = pygame.font.Font(font_path, 40)
 
     def render(self, help_mode):
+        """Metodi renderöi pelin näkymän. Renderöiminen on jaettu pelilaudasta,
+        pelaajien nappuloiden määristä sekä pelin aputilan napista vastaaviin
+        metodeihin. Metodi kutsuu ensin kaikkia näitä metodeita ja lopuksi päivittää
+        ruudun.
+
+        Args:
+            help_mode (Boolean): Kertoo onko pelin aputila päällä.
+        """
+        self._render_board(help_mode)
+        self._render_tally()
+        self._render_help_mode(help_mode)
+
+        pygame.display.update()
+
+    def _render_board(self, help_mode):
+        """Metodi renderöi laudan tilan. Ensin ruudulle lisätään laudan kuva, joka
+        on valmiina kuvana tiedostoissa. Tämän jälkeen metodi käy läpi laudan joka
+        ruudun ja piirtää ympyrän mikäli siinä on pelinappula. Jos aputila on päällä
+        piirretään myös laillisten siirtojen ruutuihin siniset ympyrät.
+
+        Args:
+            help_mode (Boolean): Kertoo onko pelin aputila päällä.
+        """
+
         self.display.blit(self.bg_img, (0, 0))
         for i in range(8):
             for j in range(8):
@@ -27,12 +62,11 @@ class Renderer:
                 elif (i, j) in self.board.legal_list and help_mode:
                     pygame.draw.circle(
                         self.display, (3, 177, 252), (55+(100*i), 55+(100*j)), 40)
-        self._render_tally()
-        self._render_help_mode(help_mode)
-
-        pygame.display.update()
 
     def _render_tally(self):
+        """Metodi piirtää pelaajien nappuloiden määrät ruudun alapalkkiin.
+        Lisäksi metodi piirtää vuorossa olevan pelaajan nappulan alapalkkiin.
+        """
         if self.board.player:
             turn_colour = (0, 0, 0)
         else:
@@ -53,6 +87,11 @@ class Renderer:
         self.display.blit(white_tally_text, (730, 815))
 
     def _render_help_mode(self, help_mode):
+        """Metodi renderöi pelin aputilan napin.
+
+        Args:
+            help_mode (Boolean): Kertoo onko pelin aputila päällä
+        """
         if help_mode:
             button_colour = (21, 209, 90)
             button_text = self.tally_font.render(
@@ -67,6 +106,15 @@ class Renderer:
         self.display.blit(button_text, (200, 815))
 
     def render_state(self, state):
+        """Metodi renderöi pelin tilaa vastaavan tekstilaatikon.
+
+        Args:
+            state (int): Pelin tilaa kuvaava muuttuja:
+            1 = Ei siirtoja
+            2 = Musta voitti
+            3 = Valkoinen voitti
+            4 = Tasapeli
+        """
         if state == 2:
             text = self.font.render("Musta voitti", True, (255, 255, 255))
             text_pos = (215, 355)
