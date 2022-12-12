@@ -12,4 +12,5 @@
 | 3.12  | 2      | Valmisteltu projekti releasea varten |
 | 8.12  | 2      | Siistitty koodia |
 | 9.12  | 3      | Tehty peliin aputila |
-| yht.  | 29      |       |
+| 12.12 | 3      | Kirjoitettu docstringiä ja päivitetty dokumentaatiota |
+| yht.  | 32      |       |
