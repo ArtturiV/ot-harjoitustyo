@@ -4,6 +4,8 @@ Tietokonesovellus lautapelistä Othello
 
 ## Dokumentaatio
 
+[Käyttöohje](https://github.com/ArtturiV/ot-harjoitustyo/blob/master/othello/dokumentaatio/kayttoohje.md)
+
 [Vaatimusmäärittely](https://github.com/ArtturiV/ot-harjoitustyo/blob/master/othello/dokumentaatio/vaatimusmaarittely.md)
 
 [Työaikakirjanpito](https://github.com/ArtturiV/ot-harjoitustyo/blob/master/othello/dokumentaatio/tuntikirjanpito.md)
