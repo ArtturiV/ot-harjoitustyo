@@ -6,16 +6,28 @@ Sovelluksen rakenne on kaksitasoinen kerrosarkkitehtuuri.
 
 ```mermaid
  classDiagram
-	ui --> logic
+	ui ..> logic
 ```
 
 Käyttöliittymästä vastavaa koodi on pakkauksessa ui ja sovelluslogiikasta vastaava pakkauksessa logic.
 
-GameInterface ottaa ui:lta vastaan klikkausten koordinaatteja ja antaa ne laudalle käsiteltäväksi.
+## Käyttöliittymä
+
+Sovellukselle on tehty graafinen käyttöliittymä.
+
+Sovellusta ohjataan hiirtä klikkaamalla, jolloin _gameinterface_ muuttaa pelin tilaa ja _renderer_ päivittää pelin ruudun.
+
+## Sovelluslogiikka
+
+_GameInterface_ ottaa _GameLoopilta_ vastaan klikkausten koordinaatteja ja antaa ne laudalle käsiteltäväksi.
 
 ```mermaid
  classDiagram
+	GameLoop "1" --> "1" GameInterface
 	GameInterface "1" --> "1" Board
+	class GameLoop{
+		handle_events()
+	}
 	class GameInterface{
 		handle_click()
 	}
