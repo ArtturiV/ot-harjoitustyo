@@ -14,11 +14,9 @@ Tietokonesovellus lautapelistä Othello
 
 [Arkkitehtuuri](https://github.com/ArtturiV/ot-harjoitustyo/blob/master/othello/dokumentaatio/arkkitehtuuri.md)
 
-## Release
+## Asennus
 
-### Asennus
-
-- Lataa release [täältä](https://github.com/ArtturiV/ot-harjoitustyo/releases/tag/viikko5)
+- Lataa uusin release [täältä](https://github.com/ArtturiV/ot-harjoitustyo/releases)
 
 - Pura kansio haluamaasi paikkaan
 
@@ -30,7 +28,7 @@ Tietokonesovellus lautapelistä Othello
 poetry install
 ```
 
-### Käyttö
+## Käyttö
 
 - Sovellus käynnistyy komennolla:
 
