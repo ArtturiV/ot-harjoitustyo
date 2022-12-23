@@ -6,16 +6,10 @@ Sovellus on Othello lautapeli.
 Pelissä asetetaan laudalle vuorotellen nappuloita, tarkoituksena vallata toisen pelaajan nappuloita.
 Pelin voittaa pelaaja, jonka väriä on pelin lopuksi enemmän laudalla.
 
-## Perusversio:
+## Ominaisuudet:
 
-- Kahdestaan pelattava versio Othellosta - tehty
-- Laillisten siirtojen automaattinen tunnistaminen - tehty
-- Pelin loppumisen ja voittajan automaattinen tunnistaminen - tehty
-- Pelin tilan tallentaminen ja lataaminen
-- Graafinen käyttöliittymä - tehty
-
-## Jatkokehitys:
-
-- Toglattava aputila, joka näyttäisi lailliset siirrot - tehty
-- Yksin pelattava versio tekoälyä vastaan
-- Pelin tilan vieminen ja tuominen leikepöydältä
+- Kahdestaan pelattava versio Othellosta
+- Laillisten siirtojen automaattinen tunnistaminen
+- Pelin loppumisen ja voittajan automaattinen tunnistaminen
+- Graafinen käyttöliittymä
+- Toglattava aputila, joka näyttää lailliset siirrot

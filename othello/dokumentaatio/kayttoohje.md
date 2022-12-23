@@ -10,6 +10,14 @@ Jos vain toisella pelaajista ei ole laillisia siirtoja hypätään pelaajan vuor
 Peli loppuu, kun kummallakaan pelaajalla ei ole enää laillisia siirtoja.
 Pelin voittaa pelaaja, jolla on lopuksi enemmän nappuloita laudalla.
 
+## Asennus
+
+- Lataa uusin release [täältä](https://github.com/ArtturiV/ot-harjoitustyo/releases)
+- Pura kansio haluamaasi paikkaan
+- Suuntaa kansioon /ot-harjoitustyo-viikko5/othello/
+- Suorita komento: `poetry install`
+- Sovellus käinnystyy komennolla `poetry run invoke start`
+
 ## Pelilaudan lukeminen
 
 1. Aktiivinen pelaaja näkyy alapalkista
