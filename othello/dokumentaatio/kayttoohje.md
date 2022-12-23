@@ -14,7 +14,7 @@ Pelin voittaa pelaaja, jolla on lopuksi enemmän nappuloita laudalla.
 
 - Lataa uusin release [täältä](https://github.com/ArtturiV/ot-harjoitustyo/releases)
 - Pura kansio haluamaasi paikkaan
-- Suuntaa kansioon /ot-harjoitustyo-viikko5/othello/
+- Suuntaa kansioon /othello/
 - Suorita komento: `poetry install`
 - Sovellus käinnystyy komennolla `poetry run invoke start`
 

@@ -22,7 +22,7 @@ Tietokonesovellus lautapelistä Othello
 
 - Pura kansio haluamaasi paikkaan
 
-- Suuntaa kansioon /ot-harjoitustyo-viikko5/othello/
+- Suuntaa kansioon /othello/
 
 - Suorita komento:
 
@@ -31,6 +31,8 @@ poetry install
 ```
 
 ## Käyttö
+
+Komentorivikomennot toimivat vain kansiossa /othello/
 
 - Sovellus käynnistyy komennolla:
 
