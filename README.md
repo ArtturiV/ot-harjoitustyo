@@ -14,6 +14,8 @@ Tietokonesovellus lautapelistä Othello
 
 [Arkkitehtuuri](https://github.com/ArtturiV/ot-harjoitustyo/blob/master/othello/dokumentaatio/arkkitehtuuri.md)
 
+[Testausdokumentti](https://github.com/ArtturiV/ot-harjoitustyo/blob/master/othello/dokumentaatio/testaus.md)
+
 ## Asennus
 
 - Lataa uusin release [täältä](https://github.com/ArtturiV/ot-harjoitustyo/releases)
