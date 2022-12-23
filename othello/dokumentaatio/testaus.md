@@ -4,16 +4,16 @@
 
 ### Laudan toiminta
 
-Laudan toiminnasta vastaa `Board`-luokka, jonka testaus tapahtuu [TestBoard]([url](https://github.com/ArtturiV/ot-harjoitustyo/blob/master/othello/src/tests/board_test.py))-luokassa.
+Laudan toiminnasta vastaa `Board`-luokka, jonka testaus tapahtuu [TestBoard](https://github.com/ArtturiV/ot-harjoitustyo/blob/master/othello/src/tests/board_test.py)-luokassa.
 
 ### Syötteiden tulkinta
 
 Pelaajan antamia syötteitä tulkitsee `GameInterface`-luokka.
-Luokkaa testataan [TestGameInterface]([url](https://github.com/ArtturiV/ot-harjoitustyo/blob/master/othello/src/tests/game_interface_test.py))-luokassa. Luokalle annetaan `Board`-luokan olio
+Luokkaa testataan [TestGameInterface](https://github.com/ArtturiV/ot-harjoitustyo/blob/master/othello/src/tests/game_interface_test.py)-luokassa. Luokalle annetaan `Board`-luokan olio
 
 ### Pelisilmukka
 
-Pelisilmukasta vastaavaa `GameLoop`-luokkaa testataan [TestGameLoop]([url](https://github.com/ArtturiV/ot-harjoitustyo/blob/master/othello/src/tests/game_loop_test.py))-luokassa.
+Pelisilmukasta vastaavaa `GameLoop`-luokkaa testataan [TestGameLoop](https://github.com/ArtturiV/ot-harjoitustyo/blob/master/othello/src/tests/game_loop_test.py)-luokassa.
 Koska `GameLoop` vastaa käyttäjän syötteiden lukemisesta emmekä voi testatessa antaa sille syötteitä, on käytettävä valekomponentteja.
 Luokalle injektoiduista riippuvuuksista `StubRenderer` ja `StubClock` eivät tee mitään,
 `StubGameInterface` palauttaa annetuista koordinaateista huolimatta määrittelemämme arvon ja `StubEventQueue` palauttaa määrittelemämme eventin.
