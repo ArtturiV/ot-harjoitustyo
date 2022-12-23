@@ -14,4 +14,4 @@
 | 9.12  | 3      | Tehty peliin aputila |
 | 12.12 | 3      | Kirjoitettu docstringiä ja päivitetty dokumentaatiota |
 | 23.12 | 3      | Valmisteltu loppupalautusta varten |
-| yht.  | 32      |       |
+| yht.  | 35      |       |
