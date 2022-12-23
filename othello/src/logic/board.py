@@ -102,12 +102,12 @@ class Board:
             Boolean: True jos siirto on laillinen, False jos ei
         """
         if (y_square, x_square) in self.legal_list:
-            self.alter_board(y_square, x_square)
+            self._alter_board(y_square, x_square)
             self.tally = self.check_tally()
             return True
         return False
 
-    def alter_board(self, y_square, x_square):
+    def _alter_board(self, y_square, x_square):
         """Muuttaa laudan tilaa annetun siirron mukaan
 
         Args:
@@ -115,9 +115,9 @@ class Board:
             x_square (int): Siirron x-koordinaatti
         """
         for move in self.legal_list[(y_square, x_square)]:
-            self.fill(y_square, x_square, move)
+            self._fill(y_square, x_square, move)
 
-    def fill(self, y_square, x_square, move):
+    def _fill(self, y_square, x_square, move):
         """Muuttaa laudan tilaa lähtöruudusta loppuruutuun.
 
         Args:
@@ -149,14 +149,14 @@ class Board:
         for i in range(8):
             for j in range(8):
                 if self.board_state[i][j] == 0:
-                    temp_moves = self.legal_check(i, j)
+                    temp_moves = self._legal_check(i, j)
                     if len(temp_moves) > 0:
                         moves[(i, j)] = temp_moves.copy()
                     temp_moves.clear()
         self.legal_list = moves
         return moves
 
-    def check_directions(self, y_square, x_square, direction):
+    def _check_directions(self, y_square, x_square, direction):
         """Tarkistaa onko annetusta ruudusta annettuun suuntaan laillinen siirto
 
         Args:
@@ -186,7 +186,7 @@ class Board:
                 temp_x += x_direction
         return False
 
-    def legal_check(self, y_square, x_square):
+    def _legal_check(self, y_square, x_square):
         """Tarkistaa lähteekö annetusta ruudusta laillisia siirtoja eri suuntiin
 
         Args:
@@ -201,7 +201,7 @@ class Board:
                       (-1, -1), (1, 1), (-1, 1), (1, -1)]
 
         for direction in directions:
-            temp = self.check_directions(y_square, x_square, direction)
+            temp = self._check_directions(y_square, x_square, direction)
             if temp is not False:
                 moves.append(temp)
 

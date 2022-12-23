@@ -8,6 +8,8 @@ from ui.renderer import Renderer
 
 
 def main():
+    """Alustaa oliot ja käynnistää pelin.
+    """
     board = Board()
     display = pygame.display.set_mode((810, 870))
     pygame.display.set_caption("Othello")

@@ -39,18 +39,18 @@ class GameLoop:
         Pelin tilan ollessa 2, 3 tai 4 on peli päättynyt ja peli lopetetaan.
         """
         while True:
-            if self.handle_events() is False:
+            if self._handle_events() is False:
                 break
             if self.game_state > 0:
-                if self.render_state(self.game_state) is False:
+                if self._render_state(self.game_state) is False:
                     break
                 if self.game_state > 1:
                     break
                 self.game_state = 0
-            self.render()
+            self._render()
             self.clock.tick(60)
 
-    def handle_events(self):
+    def _handle_events(self):
         """Metodi lukee käyttäjän syötteen. Jos syöte on hiiren klikkaus,
         tarkistetaan onko klikkaus pelilaudalla. Jos syöte on pelilaudalla,
         annetaan se gameinterface oliolle tulkittavaksi ja annetaan game_state
@@ -74,7 +74,7 @@ class GameLoop:
                 return False
         return True
 
-    def handle_state(self):
+    def _handle_state(self):
         """Hoitaa syötteiden lukemisen, kun pelin ruudulla näkyy viesti.
 
         Returns:
@@ -87,12 +87,12 @@ class GameLoop:
                 return 2
         return 0
 
-    def render(self):
+    def _render(self):
         """Kehottaa renderer-oliota renderöimään pelin.
         """
         self.renderer.render(self.help_mode)
 
-    def render_state(self, state):
+    def _render_state(self, state):
         """Renderöi pelin tilaa vastaavan viestin. Viesti näkyy ruudulla
         kolmen sekunnin ajan tai kunnes pelaaja klikkaa.
         Esimerkiksi "Musta voitti"
@@ -103,14 +103,14 @@ class GameLoop:
         Returns:
             Boolean: False jos peli lopetetaan, muuten True
         """
-        self.render()
+        self._render()
         self.renderer.render_state(state)
         start_time = self.clock.get_ticks()
         current_time = self.clock.get_ticks()
         event = 0
         while current_time - start_time < 3000:
             current_time = self.clock.get_ticks()
-            event = self.handle_state()
+            event = self._handle_state()
             if event > 0:
                 break
         if event == 2:

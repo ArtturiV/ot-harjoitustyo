@@ -40,10 +40,10 @@ class GameInterface:
         if self.board.make_move(x_coord, y_coord):
             self.board.change_player()
             if len(self.board.legal_moves()) == 0:
-                return self.handle_no_moves()
+                return self._handle_no_moves()
         return 0
 
-    def handle_no_moves(self):
+    def _handle_no_moves(self):
         """Hoitaa tilanteen, jossa vuorossa olevalla pelaajalla ei ole siirtoja
 
         Returns:

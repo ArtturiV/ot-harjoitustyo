@@ -177,7 +177,7 @@ class TestBoard(unittest.TestCase):
         self.board.set_state(state)
         moves = [(2, 3), (6, 3), (4, 1), (4, 5),
                  (2, 1), (6, 5), (2, 5), (6, 1)]
-        self.assertEqual(self.board.legal_check(4, 3), moves)
+        self.assertEqual(self.board._legal_check(4, 3), moves)
 
     def test_legal_check_player2(self):
         state = [[0, 0, 0, 0, 0, 0, 0, 0],
@@ -192,16 +192,16 @@ class TestBoard(unittest.TestCase):
         self.board.change_player()
         moves = [(2, 3), (6, 3), (4, 1), (4, 5),
                  (2, 1), (6, 5), (2, 5), (6, 1)]
-        self.assertEqual(self.board.legal_check(4, 3), moves)
+        self.assertEqual(self.board._legal_check(4, 3), moves)
 
     def test_empty_legal_check_player1(self):
         moves = []
-        self.assertEqual(self.board.legal_check(1, 1), moves)
+        self.assertEqual(self.board._legal_check(1, 1), moves)
 
     def test_empty_legal_check_player2(self):
         moves = []
         self.board.change_player()
-        self.assertEqual(self.board.legal_check(1, 1), moves)
+        self.assertEqual(self.board._legal_check(1, 1), moves)
 
     def test_check_tally(self):
         self.assertEqual(self.board.check_tally(), (2, 2))
